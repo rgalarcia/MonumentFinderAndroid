@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                                        if (result.contentEquals("OK"))
                                        {
-                                           text = "Success.";
+                                           text = "Log in successful.";
                                        } else {
                                            text = "Error: Username or password is incorrect.";
                                        }
