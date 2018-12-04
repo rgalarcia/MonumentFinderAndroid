@@ -1,6 +1,7 @@
 package com.example.usuari.myapplication2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,6 +24,9 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String USERNAME = "com.example.MonumentFinderAndroid.USER";
+    public static final String IPADDRESS = "com.example.MonumentFinderAndroid.IP";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView userInput = findViewById(R.id.userInput);
         final TextView passInput = findViewById(R.id.passInput);
         final TextView ipInput = findViewById(R.id.ipInput);
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -85,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
                                        if (result.contentEquals("OK"))
                                        {
                                            text = "Log in successful.";
+                                           LoadProfile();
+
+
                                        } else {
                                            text = "Error: Username or password is incorrect.";
                                        }
@@ -127,5 +138,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+    }
+
+    public void LoadProfile(){
+        Intent intent = new Intent(this, Profile.class);
+        TextView userInput = findViewById(R.id.userInput);
+        TextView ipInput = findViewById(R.id.ipInput);
+        String message = userInput.getText().toString();
+        String message2 = ipInput.getText().toString();
+        intent.putExtra(USERNAME, message);
+        intent.putExtra(IPADDRESS, message2);
+        startActivity(intent);
     }
 }
