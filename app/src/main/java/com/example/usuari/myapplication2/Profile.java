@@ -1,12 +1,18 @@
 package com.example.usuari.myapplication2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.*;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.*;
 
@@ -25,6 +31,8 @@ public class Profile extends AppCompatActivity {
 
     public static String message;
     public static String message2;
+    public static View convertView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +82,15 @@ public class Profile extends AppCompatActivity {
                     }
 
                     result = sb.toString();
-                    ArrayList<Monument> lm = new ArrayList<>();
+                    Context context = getApplicationContext();
+                    CharSequence text;
+                    int duration = Toast.LENGTH_SHORT;
+                    text = result;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    /*
+
+                    final ArrayList<Monument> lm = new ArrayList<>();
                     try {
                         JSONObject obj = new JSONObject(result);
                         JSONArray arr = obj.getJSONArray(result);
@@ -103,29 +119,30 @@ public class Profile extends AppCompatActivity {
                     handler.post(new Runnable(){
                         public void run() {
 
-                            Context context = getApplicationContext();
+                             Context context = getApplicationContext();
                             CharSequence text;
                             int duration = Toast.LENGTH_SHORT;
-
-                            text = result;
-
-                            /*
-
-                            if (result.contentEquals("OK"))
-                            {
-                                text = "Log in successful.";
-
-
-                            } else {
-                                text = "Error: Username or password is incorrect.";
-                            }
-
-                            */
-
+                            text = lm.get(1).toString();
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
+
+                            TextView Monument1 = findViewById(R.id.Monument1_name);
+                            Monument1.setText(lm.get(1).name);
+
+/*
+                            ImageButton monument1 = convertView.findViewById(R.id.Monument1);
+                            Picasso.with(context).load(lm.get(1).imageurl).into(monument1);
+
+                            ImageButton monument2 = convertView.findViewById(R.id.Monument2);
+                            loadImageFromURL(lm[2].imageURL);
+                            ImageButton monument3 = convertView.findViewById(R.id.Monument3);
+                            loadImageFromURL(lm[3].imageURL);
+                            ImageButton monument4 = convertView.findViewById(R.id.Monument4);
+                            loadImageFromURL(lm[4].imageURL);
+
                         }
                     });
+        */
 
                 } catch (ProtocolException e) {
                     e.printStackTrace();
