@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public class Profile extends AppCompatActivity {
@@ -34,12 +37,13 @@ public class Profile extends AppCompatActivity {
         message = intent.getStringExtra(MainActivity.USERNAME);
         message2 = intent.getStringExtra(MainActivity.IPADDRESS);
 
+
         // Capture the layout's TextView and set the string as its text
         TextView Welcome = findViewById(R.id.WelcomeText);
         Welcome.setText("Hello, "+message+", this is your profile");
 
 
-
+        // Obtain the profile information from the server
         Thread thread = new Thread (new Runnable(){
             InputStream stream = null;
             String str = "";
@@ -53,8 +57,8 @@ public class Profile extends AppCompatActivity {
 
                     URL url = new URL(uri);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setReadTimeout(1500);
-                    conn.setConnectTimeout(1500);
+                    conn.setReadTimeout(1000);
+                    conn.setConnectTimeout(1000);
                     conn.setRequestMethod("GET");
                     conn.setDoInput(true);
                     conn.connect();
@@ -68,7 +72,33 @@ public class Profile extends AppCompatActivity {
                     while((line = reader.readLine()) != null){
                         sb.append(line);
                     }
+
                     result = sb.toString();
+                    ArrayList<Monument> lm = new ArrayList<>();
+                    try {
+                        JSONObject obj = new JSONObject(result);
+                        JSONArray arr = obj.getJSONArray(result);
+                        for (int i = 0; i < arr.length(); i++) {
+                            String name = arr.getJSONObject(i).getString("name");
+                            String lat = arr.getJSONObject(i).getString("lat");
+                            String lon = arr.getJSONObject(i).getString("lon");
+                            String cat = arr.getJSONObject(i).getString("cat");
+                            String param = arr.getJSONObject(i).getString("param");
+                            String description = arr.getJSONObject(i).getString("description");
+                            String imageURL = arr.getJSONObject(i).getString("imageURL");
+                            Monument m = new Monument(name,Double.parseDouble(lat),Double.parseDouble(lon),cat,param,description,imageURL);
+                            lm.add(m);
+                        }
+                    }
+                    catch(JSONException e){
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Exception: JSON Exception", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
 
                     handler.post(new Runnable(){
                         public void run() {
@@ -76,6 +106,10 @@ public class Profile extends AppCompatActivity {
                             Context context = getApplicationContext();
                             CharSequence text;
                             int duration = Toast.LENGTH_SHORT;
+
+                            text = result;
+
+                            /*
 
                             if (result.contentEquals("OK"))
                             {
@@ -85,6 +119,8 @@ public class Profile extends AppCompatActivity {
                             } else {
                                 text = "Error: Username or password is incorrect.";
                             }
+
+                            */
 
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
