@@ -11,11 +11,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.*;
-
-import com.squareup.picasso.Picasso;
-
+//import com.squareup.picasso.Picasso;
 import org.json.*;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -82,12 +79,32 @@ public class Profile extends AppCompatActivity {
                     }
 
                     result = sb.toString();
-                    Context context = getApplicationContext();
-                    CharSequence text;
-                    int duration = Toast.LENGTH_SHORT;
-                    text = result;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+
+                    try {
+                        JSONArray jsonarray = new JSONArray(result);
+                        JSONObject jsonobject = jsonarray.getJSONObject(1);
+                        final String name = jsonobject.getString("name");
+
+                        handler.post(new Runnable() {
+                            public void run() {
+
+                                Context context = getApplicationContext();
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast = Toast.makeText(context, name, duration);
+                                toast.show();
+                            }
+                        });
+                    }  catch (final JSONException e) {
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                TextView Monument1 = findViewById(R.id.Monument1_name);
+                                Monument1.setText(e.getMessage());
+                                //Toast.makeText(getApplicationContext(), "Exception: JSON Exception: "+ e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
                     /*
 
                     final ArrayList<Monument> lm = new ArrayList<>();
