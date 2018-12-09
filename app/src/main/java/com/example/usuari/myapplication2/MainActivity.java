@@ -147,10 +147,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         TextView userInput = findViewById(R.id.userInput);
         TextView ipInput = findViewById(R.id.ipInput);
-        String message = userInput.getText().toString();
-        String message2 = ipInput.getText().toString();
-        intent.putExtra(USERNAME, message);
-        intent.putExtra(IPADDRESS, message2);
+        String username = userInput.getText().toString();
+        String ipaddress = ipInput.getText().toString();
+        intent.putExtra(USERNAME, username);
+        intent.putExtra(IPADDRESS, ipaddress);
         startActivity(intent);
     }
 }
