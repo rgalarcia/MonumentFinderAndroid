@@ -8,10 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.*;
 //import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso;
+
 import org.json.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -84,6 +87,7 @@ public class Profile extends AppCompatActivity {
                         JSONArray jsonarray = new JSONArray(result);
                         JSONObject jsonobject = jsonarray.getJSONObject(1);
                         final String name = jsonobject.getString("name");
+                        final String imageurl = jsonobject.getString("imageurl");
 
                         handler.post(new Runnable() {
                             public void run() {
@@ -92,6 +96,16 @@ public class Profile extends AppCompatActivity {
                                 int duration = Toast.LENGTH_SHORT;
                                 Toast toast = Toast.makeText(context, name, duration);
                                 toast.show();
+                                TextView Name = findViewById(R.id.Monument1_name);
+                                Name.setText(name);
+                                ImageView IMAGE = findViewById(R.id.Monument1_image);
+                                Picasso.with(context)
+                                        .load(imageurl)
+                                        .resize(500,500)
+                                        .into(IMAGE);
+
+
+
                             }
                         });
                     }  catch (final JSONException e) {
