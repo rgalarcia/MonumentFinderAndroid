@@ -1,15 +1,18 @@
 package com.example.usuari.myapplication2;
 
-import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ public class Profile extends AppCompatActivity {
 
     public static String username;
     public static String ipaddress;
+    static JSONArray jsonarray;
     public static String description;
 
 
@@ -85,15 +89,7 @@ public class Profile extends AppCompatActivity {
 
                     param = sb.toString();
 
-                    handler.post(new Runnable() {
-                        public void run() {
-                            Context context = getApplicationContext();
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(context, "He conseguido el parametro:" + param, duration);
-                            toast.show();
 
-                        }
-                    });
 
                     final String uri2 = String.format("http://" + ipaddress + ":9000/AndroidProfileLoad?param=" + param);
 
@@ -119,96 +115,119 @@ public class Profile extends AppCompatActivity {
 
 
                     try {
-                        JSONArray jsonarray = new JSONArray(result);
-                        JSONObject jsonobject = jsonarray.getJSONObject(0);
-                        final String name = jsonobject.getString("name");
-                        final String imageurl = jsonobject.getString("imageurl");
-                        description = jsonobject.getString("description");
+                         jsonarray = new JSONArray(result);
 
                         handler.post(new Runnable() {
                             public void run() {
 
-                                Context context = getApplicationContext();
-                                int duration = Toast.LENGTH_SHORT;
-                                Toast toast = Toast.makeText(context, name, duration);
-                                toast.show();
-                                TextView Name = findViewById(R.id.Monument1_name);
-                                Name.setText(name);
-                                ImageView IMAGE = findViewById(R.id.Monument1_image);
-                                Picasso.with(context)
-                                        .load(imageurl)
-                                        .resize(500, 500)
-                                        .into(IMAGE);
+                                for (int i = 0; i < 22; i++) {
+
+                                    TextView Name;
+                                    ImageView IMAGE;
+
+                                    Name = findViewById(R.id.Monument_name0);
+                                    IMAGE = findViewById(R.id.Monument_image0);
+
+                                    if (i == 1) {
+                                        Name = findViewById(R.id.Monument_name1);
+                                        IMAGE = findViewById(R.id.Monument_image1);
+                                    } else if (i == 2) {
+                                        Name = findViewById(R.id.Monument_name2);
+                                        IMAGE = findViewById(R.id.Monument_image2);
+                                    } else if (i == 3) {
+                                        Name = findViewById(R.id.Monument_name3);
+                                        IMAGE = findViewById(R.id.Monument_image3);
+                                    } else if (i == 4) {
+                                        Name = findViewById(R.id.Monument_name4);
+                                        IMAGE = findViewById(R.id.Monument_image4);
+                                    } else if (i == 5) {
+                                        Name = findViewById(R.id.Monument_name5);
+                                        IMAGE = findViewById(R.id.Monument_image5);
+                                    } else if (i == 6) {
+                                        Name = findViewById(R.id.Monument_name6);
+                                        IMAGE = findViewById(R.id.Monument_image6);
+                                    } else if (i == 7) {
+                                        Name = findViewById(R.id.Monument_name7);
+                                        IMAGE = findViewById(R.id.Monument_image7);
+                                    } else if (i == 8) {
+                                        Name = findViewById(R.id.Monument_name8);
+                                        IMAGE = findViewById(R.id.Monument_image8);
+                                    } else if (i == 9) {
+                                        Name = findViewById(R.id.Monument_name9);
+                                        IMAGE = findViewById(R.id.Monument_image9);
+                                    } else if (i == 10) {
+                                        Name = findViewById(R.id.Monument_name10);
+                                        IMAGE = findViewById(R.id.Monument_image10);
+                                    } else if (i == 11) {
+                                        Name = findViewById(R.id.Monument_name11);
+                                        IMAGE = findViewById(R.id.Monument_image11);
+                                    } else if (i == 12) {
+                                        Name = findViewById(R.id.Monument_name12);
+                                        IMAGE = findViewById(R.id.Monument_image12);
+                                    } else if (i == 13) {
+                                        Name = findViewById(R.id.Monument_name13);
+                                        IMAGE = findViewById(R.id.Monument_image13);
+                                    } else if (i == 14) {
+                                        Name = findViewById(R.id.Monument_name14);
+                                        IMAGE = findViewById(R.id.Monument_image14);
+                                    } else if (i == 15) {
+                                        Name = findViewById(R.id.Monument_name15);
+                                        IMAGE = findViewById(R.id.Monument_image15);
+                                    } else if (i == 16) {
+                                        Name = findViewById(R.id.Monument_name16);
+                                        IMAGE = findViewById(R.id.Monument_image16);;
+                                    } else if (i == 17) {
+                                        Name = findViewById(R.id.Monument_name17);
+                                        IMAGE = findViewById(R.id.Monument_image17);
+                                    } else if (i == 18) {
+                                        Name = findViewById(R.id.Monument_name18);
+                                        IMAGE = findViewById(R.id.Monument_image18);
+                                    } else if (i == 19) {
+                                        Name = findViewById(R.id.Monument_name19);
+                                        IMAGE = findViewById(R.id.Monument_image19);
+                                    } else if (i == 20) {
+                                        Name = findViewById(R.id.Monument_name20);
+                                        IMAGE = findViewById(R.id.Monument_image20);
+                                    } else if (i == 21) {
+                                        Name = findViewById(R.id.Monument_name21);
+                                        IMAGE = findViewById(R.id.Monument_image21);
+                                    }
 
 
+                                    if(i<jsonarray.length()) {
+                                        try {
+                                            JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                            final String name = jsonobject.getString("name");
+                                            String imageURL = jsonobject.getString("imageurl");
+
+                                            Context context = getApplicationContext();
+
+                                            Name.setText(name);
+                                            Picasso.with(context)
+                                                    .load(imageURL)
+                                                    .resize(500, 500)
+                                                    .into(IMAGE);
+
+                                        } catch (final JSONException e) {
+                                            e.printStackTrace();
+
+                                        }
+                                    } else{
+                                        Name.setVisibility(View.GONE);
+                                        IMAGE.setVisibility(View.GONE);
+                                    }
+                                }
                             }
                         });
                     } catch (final JSONException e) {
                         e.printStackTrace();
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                TextView Monument1 = findViewById(R.id.Monument1_name);
-                                Monument1.setText(e.getMessage());
-                                //Toast.makeText(getApplicationContext(), "Exception: JSON Exception: "+ e.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Exception: JSON Exception: "+ e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
                     }
 
-                    /*
-
-                    final ArrayList<Monument> lm = new ArrayList<>();
-                    try {
-                        JSONObject obj = new JSONObject(result);
-                        JSONArray arr = obj.getJSONArray(result);
-                        for (int i = 0; i < arr.length(); i++) {
-                            String name = arr.getJSONObject(i).getString("name");
-                            String lat = arr.getJSONObject(i).getString("lat");
-                            String lon = arr.getJSONObject(i).getString("lon");
-                            String cat = arr.getJSONObject(i).getString("cat");
-                            String param = arr.getJSONObject(i).getString("param");
-                            String description = arr.getJSONObject(i).getString("description");
-                            String imageURL = arr.getJSONObject(i).getString("imageURL");
-                            Monument m = new Monument(name,Double.parseDouble(lat),Double.parseDouble(lon),cat,param,description,imageURL);
-                            lm.add(m);
-                        }
-                    }
-                    catch(JSONException e){
-                        e.printStackTrace();
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Exception: JSON Exception", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-
-                    handler.post(new Runnable(){
-                        public void run() {
-
-                             Context context = getApplicationContext();
-                            CharSequence text;
-                            int duration = Toast.LENGTH_SHORT;
-                            text = lm.get(1).toString();
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
-
-                            TextView Monument1 = findViewById(R.id.Monument1_name);
-                            Monument1.setText(lm.get(1).name);
-
-/*
-                            ImageButton monument1 = convertView.findViewById(R.id.Monument1);
-                            Picasso.with(context).load(lm.get(1).imageurl).into(monument1);
-
-                            ImageButton monument2 = convertView.findViewById(R.id.Monument2);
-                            loadImageFromURL(lm[2].imageURL);
-                            ImageButton monument3 = convertView.findViewById(R.id.Monument3);
-                            loadImageFromURL(lm[3].imageURL);
-                            ImageButton monument4 = convertView.findViewById(R.id.Monument4);
-                            loadImageFromURL(lm[4].imageURL);
-
-                        }
-                    });
-        */
 
                 } catch (ProtocolException e) {
                     e.printStackTrace();
@@ -241,23 +260,183 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    public void ShowMore(View view) {
-
-
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, description, duration);
-        toast.show();
-/*
-        Context context = getApplicationContext();
-        AlertDialog.Builder builder = new AlertDialog.Builder(context); //Read Update
-        builder.setTitle("hi");
-        builder.setMessage(description);
-
+    public void OpenMaps(View view) {
+        int i = 0;
+        switch (view.getId()) {
+            case R.id.Monument_image0:
+                i = 0;
+                break;
+            case R.id.Monument_image1:
+                i = 1;
+                break;
+            case R.id.Monument_image2:
+                i = 2;
+                break;
+            case R.id.Monument_image3:
+                i = 3;
+                break;
+            case R.id.Monument_image4:
+                i = 4;
+                break;
+            case R.id.Monument_image5:
+                i = 5;
+                break;
+            case R.id.Monument_image6:
+                i = 6;
+                break;
+            case R.id.Monument_image7:
+                i = 7;
+                break;
+            case R.id.Monument_image8:
+                i = 8;
+                break;
+            case R.id.Monument_image9:
+                i = 9;
+                break;
+            case R.id.Monument_image10:
+                i = 10;
+                break;
+            case R.id.Monument_image11:
+                i = 11;
+                break;
+            case R.id.Monument_image12:
+                i = 12;
+                break;
+            case R.id.Monument_image13:
+                i = 13;
+                break;
+            case R.id.Monument_image14:
+                i = 14;
+                break;
+            case R.id.Monument_image15:
+                i = 15;
+                break;
+            case R.id.Monument_image16:
+                i = 16;
+                break;
+            case R.id.Monument_image17:
+                i = 17;
+                break;
+            case R.id.Monument_image18:
+                i = 18;
+                break;
+            case R.id.Monument_image19:
+                i = 19;
+                break;
+            case R.id.Monument_image20:
+                i = 20;
+                break;
+            case R.id.Monument_image21:
+                i = 21;
+                break;
         }
 
-*/
+        try {
+            JSONObject jsonobject = jsonarray.getJSONObject(i);
+            String name = jsonobject.getString("name");
+            String lat = jsonobject.getString("lat");
+            String lon = jsonobject.getString("lon");
+            String uri = "geo:" + lat + "," + lon +"?q="+lat+","+lon+"("+name+")";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
+        }
+        catch (final JSONException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void ShowMore(View view) {
+
+        int i = 0;
+        switch (view.getId()) {
+            case R.id.Monument_image0:
+                i = 0;
+                break;
+            case R.id.Monument_image1:
+                i = 1;
+                break;
+            case R.id.Monument_image2:
+                i = 2;
+                break;
+            case R.id.Monument_image3:
+                i = 3;
+                break;
+            case R.id.Monument_image4:
+                i = 4;
+                break;
+            case R.id.Monument_image5:
+                i = 5;
+                break;
+            case R.id.Monument_image6:
+                i = 6;
+                break;
+            case R.id.Monument_image7:
+                i = 7;
+                break;
+            case R.id.Monument_image8:
+                i = 8;
+                break;
+            case R.id.Monument_image9:
+                i = 9;
+                break;
+            case R.id.Monument_image10:
+                i = 10;
+                break;
+            case R.id.Monument_image11:
+                i = 11;
+                break;
+            case R.id.Monument_image12:
+                i = 12;
+                break;
+            case R.id.Monument_image13:
+                i = 13;
+                break;
+            case R.id.Monument_image14:
+                i = 14;
+                break;
+            case R.id.Monument_image15:
+                i = 15;
+                break;
+            case R.id.Monument_image16:
+                i = 16;
+                break;
+            case R.id.Monument_image17:
+                i = 17;
+                break;
+            case R.id.Monument_image18:
+                i = 18;
+                break;
+            case R.id.Monument_image19:
+                i = 19;
+                break;
+            case R.id.Monument_image20:
+                i = 20;
+                break;
+            case R.id.Monument_image21:
+                i = 21;
+                break;
+        }
+
+        try {
+            JSONObject jsonobject = jsonarray.getJSONObject(i);
+            description = jsonobject.getString("description");
+        }
+        catch (final JSONException e) {
+            e.printStackTrace();
+        }
+
+        Context context = getApplicationContext();
+
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, description, duration);
+        toast.show();
+
+    }
+
+
+
 }
+
 
 
