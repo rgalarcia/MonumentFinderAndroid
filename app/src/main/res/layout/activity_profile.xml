@@ -62,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image20" />
 
@@ -94,7 +94,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image19" />
 
@@ -126,7 +126,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image18" />
 
@@ -158,7 +158,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image17" />
 
@@ -190,7 +190,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image16" />
 
@@ -222,7 +222,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image15" />
 
@@ -254,7 +254,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image14" />
 
@@ -286,7 +286,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image13" />
 
@@ -318,7 +318,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image12" />
 
@@ -350,7 +350,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image11" />
 
@@ -382,7 +382,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image10" />
 
@@ -414,7 +414,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image9" />
 
@@ -446,7 +446,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image8" />
 
@@ -478,7 +478,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image7" />
 
@@ -510,7 +510,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image6" />
 
@@ -542,7 +542,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image5" />
 
@@ -574,7 +574,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:onClick="ShowMore"
+            android:onClick="ShowMore"
             android:clickable="true"
             app:layout_constraintTop_toBottomOf="@+id/Monument_image4" />
 

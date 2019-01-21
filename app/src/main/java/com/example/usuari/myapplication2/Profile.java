@@ -350,70 +350,70 @@ public class Profile extends AppCompatActivity {
 
         int i = 0;
         switch (view.getId()) {
-            case R.id.Monument_image0:
+            case R.id.Monument_name0:
                 i = 0;
                 break;
-            case R.id.Monument_image1:
+            case R.id.Monument_name1:
                 i = 1;
                 break;
-            case R.id.Monument_image2:
+            case R.id.Monument_name2:
                 i = 2;
                 break;
-            case R.id.Monument_image3:
+            case R.id.Monument_name3:
                 i = 3;
                 break;
-            case R.id.Monument_image4:
+            case R.id.Monument_name4:
                 i = 4;
                 break;
-            case R.id.Monument_image5:
+            case R.id.Monument_name5:
                 i = 5;
                 break;
-            case R.id.Monument_image6:
+            case R.id.Monument_name6:
                 i = 6;
                 break;
-            case R.id.Monument_image7:
+            case R.id.Monument_name7:
                 i = 7;
                 break;
-            case R.id.Monument_image8:
+            case R.id.Monument_name8:
                 i = 8;
                 break;
-            case R.id.Monument_image9:
+            case R.id.Monument_name9:
                 i = 9;
                 break;
-            case R.id.Monument_image10:
+            case R.id.Monument_name10:
                 i = 10;
                 break;
-            case R.id.Monument_image11:
+            case R.id.Monument_name11:
                 i = 11;
                 break;
-            case R.id.Monument_image12:
+            case R.id.Monument_name12:
                 i = 12;
                 break;
-            case R.id.Monument_image13:
+            case R.id.Monument_name13:
                 i = 13;
                 break;
-            case R.id.Monument_image14:
+            case R.id.Monument_name14:
                 i = 14;
                 break;
-            case R.id.Monument_image15:
+            case R.id.Monument_name15:
                 i = 15;
                 break;
-            case R.id.Monument_image16:
+            case R.id.Monument_name16:
                 i = 16;
                 break;
-            case R.id.Monument_image17:
+            case R.id.Monument_name17:
                 i = 17;
                 break;
-            case R.id.Monument_image18:
+            case R.id.Monument_name18:
                 i = 18;
                 break;
-            case R.id.Monument_image19:
+            case R.id.Monument_name19:
                 i = 19;
                 break;
-            case R.id.Monument_image20:
+            case R.id.Monument_name20:
                 i = 20;
                 break;
-            case R.id.Monument_image21:
+            case R.id.Monument_name21:
                 i = 21;
                 break;
         }
@@ -433,10 +433,4 @@ public class Profile extends AppCompatActivity {
         toast.show();
 
     }
-
-
-
 }
-
-
-
